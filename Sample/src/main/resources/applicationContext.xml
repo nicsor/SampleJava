@@ -42,4 +42,10 @@
 			ref="hibernate4AnnotatedSessionFactory" />
 	</bean>
 
+	<bean id="business"
+		class="com.sample.business.impl.UsersManagerImpl">
+		<property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
+	</bean>
+
 </beans>
