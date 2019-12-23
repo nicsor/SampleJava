@@ -11,9 +11,27 @@
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<hibernate.version>4.3.6.Final</hibernate.version>
+		<mysql.connector.version>8.0.16</mysql.connector.version>
 	</properties>
 
 	<dependencies>
+
+		<!-- Mysql Connector -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.connector.version}</version>
+		</dependency>
+
+		<!-- Hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+
+		<!-- data transfer objects library -->
 		<dependency>
 			<groupId>com.sample.commons</groupId>
 			<artifactId>Commons</artifactId>
