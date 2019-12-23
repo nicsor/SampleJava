@@ -1,0 +1,37 @@
+-- 1. remove any existing schema with the target mame
+DROP SCHEMA IF EXISTS gestiune;
+
+-- 2. create a clean schema
+CREATE SCHEMA IF NOT EXISTS gestiune;
+
+-- 3. use created schema
+USE gestiune;
+
+-- 4. create tables in empty schema
+CREATE TABLE Users (
+    userId int AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE KEY,
+    password VARCHAR(255) NOT NULL
+);
+CREATE TABLE Projects (
+    projectId int AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    managerId int NOT NULL,
+    CONSTRAINT FK_UsersProjects FOREIGN KEY (managerId) REFERENCES Users(userId)
+);
+CREATE TABLE Organization (
+    projectId int,
+    userId int,
+    CONSTRAINT FK_OrganizationUsers FOREIGN KEY (userId) REFERENCES Users(userId),
+    CONSTRAINT FK_OrganizationProjects FOREIGN KEY (projectId) REFERENCES Projects(projectId)
+);
+
+-- 5. insert data into tables
+INSERT INTO Users VALUES(1, "Grigore", "grig@or@e", "pass");
+INSERT INTO Users VALUES(2, "Bartolomeu", "bart@olo.meu", "pass");
+INSERT INTO Users VALUES(3, "Marcel", "marcel@email.com", "pass");
+INSERT INTO Projects VALUES(1, "Barometru", 1);
+INSERT INTO Projects VALUES(2, "Branz'albastra", 1);
+INSERT INTO Organization VALUES(1, 1);
+INSERT INTO Organization VALUES(2, 1);
